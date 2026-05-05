@@ -17,28 +17,30 @@ summary file. This pipeline is made with snakemake for reproducibility and scala
 1. Clone the repository:
 ``` bash  
 git clone https://github.com/hasibulhossainsau-netizen/amr_pipeline_proto
-cd amr_pipeline_proto ```
+cd amr_pipeline_proto 
 
 2. Create the conda environments from the provided YAML files:
-``` bash 
+
 conda env create -f envs/amr_pipeline.yaml
 conda env create -f envs/resfinder_env.yaml
-conda env create -f envs/rgi_env.yaml ```
+conda env create -f envs/rgi_env.yaml 
 
 3. Activate the main environment 
-``` bash
-conda activate amr_pipeline ```
+
+conda activate amr_pipeline
 
 ## Usage 
 Dry Run(test the workflow logic)
-```bash 
-snakemake --use-conda -n ```
+
+snakemake --use-conda -n 
+
 Run the pipeline with snakemake
-``` bash 
-snakemake --use-conda --cores 4 ```
+ 
+snakemake --use-conda --cores 4 
+
 To generate a DAG visualization of the workflow 
-``` bash 
-snakemake --dag | dot -Tpng > dag.png ```
+ 
+snakemake --dag | dot -Tpng > dag.png 
 
 ## Citation and Tool references 
 1. RGI (Resetance Gene Identifier) - Alcock, B. P., Huynh, W., Chalil, R., Smith, K. W., Raphenya, A. R., Wlodarski, M. A., Edalatmand, A., Petkau, A., Syed, S. A., Tsang, K. K., Baker, S. J. C., Dave, M., McCarthy, M. C., Mukiri, K. M., Nasir, J. A., Golbon, B., Imtiaz, H., Jiang, X., Kaur, K., Kwong, M., … McArthur, A. G. (2023). CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic acids research, 51(D1), D690–D699. https://doi.org/10.1093/nar/gkac920
