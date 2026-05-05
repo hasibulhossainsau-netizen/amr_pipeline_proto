@@ -1,9 +1,9 @@
 # AMR_Pipeline_Proto(prototype)
 
 ## Project Abstract
-This pipeline is designed to automate the detection of Antimicrobial Resistance (AMR) genes from E. coli bacterial whole genome sequencing (WGS) data. It fetches raw reads, performs quality control(QC),
-assembles trimmed reads with SPAdes and detect AMR genes with three separate tools, **RGI** (CARD database), **ResFinder**, and **ARG-ANNOT** (via BLAST)—in parallel. The result are then integrated into one
-summary file. This pipeline is made with snakemake for reproducibility and scalability. 
+This pipeline is designed to automate the detection of Antimicrobial Resistance (AMR) genes from E. coli bacterial whole-genome sequencing (WGS) data. It fetches raw reads, performs quality control(QC),
+assembles trimmed reads with SPAdes, and detects AMR genes with three separate tools, **RGI** (CARD database), **ResFinder**, and **ARG-ANNOT** (via BLAST)—in parallel. The results are then integrated into one
+summary file. This pipeline is made with Snakemake for reproducibility and scalability. 
 
 ![Pipeline Workflow](dag.png)
 
@@ -48,5 +48,5 @@ snakemake --dag | dot -Tpng > dag.png
 3. ARG-ANNOT - Gupta, S. K., Padmanabhan, B. R., Diene, S. M., Lopez-Rojas, R., Kempf, M., Landraud, L., & Rolain, J. M. (2014). ARG-ANNOT, a new bioinformatic tool to discover antibiotic resistance genes in bacterial genomes. Antimicrobial agents and chemotherapy, 58(1), 212–220. https://doi.org/10.1128/AAC.01310-13
 4. Snakemake -  Mölder F, Jablonski KP, Letcher B et al. Sustainable data analysis with Snakemake [version 1; peer review: 1 approved, 1 approved with reservations]. F1000Research 2021, 10:33 (https://doi.org/10.12688/f1000research.29032.1) 
 5. SPAdes - Prjibelski, A., Antipov, D., Meleshko, D., Lapidus, A., & Korobeynikov, A. (2020). Using SPAdes de novo assembler. Current Protocols in Bioinformatics, 70, e102. doi: 10.1002/cpbi.102
-## Licence 
+## License 
 This project is licensed under the MIT License. See the LICENSE file for details. 
