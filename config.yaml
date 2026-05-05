@@ -1,0 +1,199 @@
+# ============================================
+# AMR PIPELINE CONFIGURATION
+# Curriculum-Aligned (Week 4–13)
+# Optimized for i5 + 12GB WSL RAM
+# ============================================
+
+# -------------------------------
+# PATHS
+# -------------------------------
+paths:
+  raw_fastq: "data/fastq"
+  trimmed_fastq: "data/trimmed"
+  assemblies: "data/assemblies"
+  results: "results"
+  logs: "logs"
+  manifest: "data/master_manifest.csv"
+  metadata: "data/metadata"
+
+# -------------------------------
+# DATASETS (Week 5 + Week 10)
+# -------------------------------
+datasets:
+  PRJNA1100899:
+    source: "ncbi"
+    country: "Bangladesh"
+    accession_file: "data/accessions/PRJNA1100899_srr.txt"
+  PRJNA1222109:
+    source: "ncbi"
+    country: "India"
+    accession_file: "data/accessions/PRJNA1222109_srr.txt"
+
+# -------------------------------
+# DOWNLOAD SETTINGS (Week 5)
+# -------------------------------
+download:
+  retries: 3
+  retry_delay: 5
+  max_parallel_downloads: 3
+  verify_checksum: true
+  sra_cache: "sra_cache"
+
+# -------------------------------
+# QC (Week 6)
+# -------------------------------
+qc:
+  tool: "fastp"
+  min_q30: 80
+  min_mean_quality: 20
+  min_length: 50
+  max_n_bases: 5
+  adapter_trim: true
+  adapters:
+    r1: "AGATCGGAAGAGCACACGTCTGAACTCCAGTCA"
+    r2: "AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT"
+  fail_conditions:
+    q30_below: 80
+    adapter_content_above: 10
+
+# -------------------------------
+# ASSEMBLY (Week 8)
+# -------------------------------
+assembly:
+  tool: "spades"
+  threads: 4
+  memory_gb: 8
+  args:
+    isolate: true
+    careful: true
+    cov_cutoff: "auto"
+  output:
+    contigs: "contigs.fasta"
+
+# -------------------------------
+# RGI (CARD Resistance Gene Identifier)
+# -------------------------------
+rgi:
+  enabled: true
+  env: "rgi_env"
+  subcommand: "main"
+  database: "db/card/card.json"
+  threads: 4
+  cutoff_filter:
+    - "Perfect"
+    - "Strict"
+  output_fields:
+    - "Best_Hit_ARO"
+    - "Drug Class"
+    - "Resistance Mechanism"
+    - "Cut_Off"
+    - "Contig"
+  blast_options:
+    evalue: 1e-30
+    max_target_seqs: 10000
+
+# -------------------------------
+# ResFinder (Week 8)
+# -------------------------------
+resfinder:
+  enabled: true
+  min_identity: 98
+  min_coverage: 95
+  min_length: 300
+  threads: 3
+  point_mutations: true
+  species: "Escherichia coli"
+
+# -------------------------------
+# ARG-ANNOT (SRST2 version)
+# -------------------------------
+argannot:
+  enabled: true
+  min_identity: 80
+  min_coverage: 70
+  database_version: "ARGannot_r3"
+  blast:
+    evalue: 1e-30
+    max_hits: 1
+    threads: 4
+
+# -------------------------------
+# DATABASE PATHS
+# -------------------------------
+databases:
+  card: "db/card"
+  resfinder: "/mnt/f/amr_pipeline_2.0/db/resfinder/"
+  pointfinder: "/mnt/f/amr_pipeline_2.0/db/resfinder/pointfinder_db"
+  argannot: "/mnt/f/amr_pipeline_2.0/db/argannot/ARGannot_r3_db"
+  argannot_fasta: "/mnt/f/amr_pipeline_2.0/db/argannot/ARGannot_r3.fasta"
+
+# -------------------------------
+# PIPELINE CONTROL (Week 9–10)
+# -------------------------------
+pipeline:
+  steps:
+    fetch: true
+    qc: true
+    assembly: true
+    rgi: true
+    resfinder: true
+    argannot: true
+    compare: true
+    integrate: true
+    visualize: true
+  max_parallel_samples: 2
+  retries_per_sample: 2
+
+# -------------------------------
+# RESOURCE MANAGEMENT
+# -------------------------------
+resources:
+  low:
+    mem_mb: 2000
+    threads: 1
+  medium:
+    mem_mb: 3000
+    threads: 2
+  high:
+    mem_mb: 8000
+    threads: 3
+
+# -------------------------------
+# CLEANUP (Week 10 scaling)
+# -------------------------------
+cleanup:
+  remove_trimmed: false
+  compress_fastq: true
+  keep_raw_fastq: true
+
+# -------------------------------
+# VISUALIZATION (Week 11)
+# -------------------------------
+visualization:
+  dpi: 300
+  format: "png"
+  heatmap:
+    cmap: "viridis"
+    cluster: true
+    figsize: [12, 10]
+  barplot:
+    stacked: true
+    figsize: [10, 6]
+  upset:
+    min_subset_size: 2
+
+# -------------------------------
+# REPORT (Week 13)
+# -------------------------------
+report:
+  notebook: "analysis/AMR_pipeline_report.ipynb"
+  output_html: "reports/AMR_report.html"
+
+# -------------------------------
+# SNAKEMAKE (Week 9 core)
+# -------------------------------
+snakemake:
+  cores: 4
+  use_conda: true
+  rerun_incomplete: true
+  keep_going: true

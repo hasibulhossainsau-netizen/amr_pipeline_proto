@@ -1,0 +1,40 @@
+# 1. Primary Ignore - Large Data and Results
+data/
+results/
+logs/
+.snakemake/
+dag.png
+
+# 2. Bioinformatics Specific Large/Intermediate Files
+# SPAdes intermediate files (K21, K33, etc. are very large)
+data/assemblies/*/K*/
+data/assemblies/*/tmp/
+data/assemblies/*/pipeline_state/
+data/assemblies/*/misc/
+
+# Sequence files
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+*.bam
+*.sam
+*.fasta
+*.fna
+*.paths
+*.fastg
+*.gfa
+*.seq
+*.off
+*.info
+
+# 3. Development and Environment
+.conda/
+envs/*/
+# Keep your yaml recipes!
+!envs/*.yaml
+
+# 4. Python cache
+__pycache__/
+*.pyc
+.pytest_cache/
