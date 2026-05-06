@@ -16,7 +16,7 @@ summary file. This pipeline is made with Snakemake for reproducibility and scala
 ## Installation
 1. Clone the repository:
 ``` bash  
-git clone https://github.com/hasibulhossainsau-netizen/amr_pipeline_proto
+git clone https://github.com/hasibulhossainsau-netizen/amr_pipeline_proto.git
 cd amr_pipeline_proto 
 ```
 2. Create the conda environments from the provided YAML files:
@@ -43,7 +43,7 @@ To generate a DAG visualization of the workflow
 snakemake --dag | dot -Tpng > dag.png 
 ```
 ## Citation and Tool references 
-1. RGI (Resetance Gene Identifier) - Alcock, B. P., Huynh, W., Chalil, R., Smith, K. W., Raphenya, A. R., Wlodarski, M. A., Edalatmand, A., Petkau, A., Syed, S. A., Tsang, K. K., Baker, S. J. C., Dave, M., McCarthy, M. C., Mukiri, K. M., Nasir, J. A., Golbon, B., Imtiaz, H., Jiang, X., Kaur, K., Kwong, M., … McArthur, A. G. (2023). CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic acids research, 51(D1), D690–D699. https://doi.org/10.1093/nar/gkac920
+1. RGI (Resistance Gene Identifier) - Alcock, B. P., Huynh, W., Chalil, R., Smith, K. W., Raphenya, A. R., Wlodarski, M. A., Edalatmand, A., Petkau, A., Syed, S. A., Tsang, K. K., Baker, S. J. C., Dave, M., McCarthy, M. C., Mukiri, K. M., Nasir, J. A., Golbon, B., Imtiaz, H., Jiang, X., Kaur, K., Kwong, M., … McArthur, A. G. (2023). CARD 2023: expanded curation, support for machine learning, and resistome prediction at the Comprehensive Antibiotic Resistance Database. Nucleic acids research, 51(D1), D690–D699. https://doi.org/10.1093/nar/gkac920
 2. ResFinder - Bortolaia, V., Kaas, R. S., Ruppe, E., Roberts, M. C., Schwarz, S., Cattoir, V., Philippon, A., Allesoe, R. L., Rebelo, A. R., Florensa, A. F., Fagelhauer, L., Chakraborty, T., Neumann, B., Werner, G., Bender, J. K., Stingl, K., Nguyen, M., Coppens, J., Xavier, B. B., Malhotra-Kumar, S., … Aarestrup, F. M. (2020). ResFinder 4.0 for predictions of phenotypes from genotypes. The Journal of antimicrobial chemotherapy, 75(12), 3491–3500. https://doi.org/10.1093/jac/dkaa345
 3. ARG-ANNOT - Gupta, S. K., Padmanabhan, B. R., Diene, S. M., Lopez-Rojas, R., Kempf, M., Landraud, L., & Rolain, J. M. (2014). ARG-ANNOT, a new bioinformatic tool to discover antibiotic resistance genes in bacterial genomes. Antimicrobial agents and chemotherapy, 58(1), 212–220. https://doi.org/10.1128/AAC.01310-13
 4. Snakemake -  Mölder F, Jablonski KP, Letcher B et al. Sustainable data analysis with Snakemake [version 1; peer review: 1 approved, 1 approved with reservations]. F1000Research 2021, 10:33 (https://doi.org/10.12688/f1000research.29032.1) 
